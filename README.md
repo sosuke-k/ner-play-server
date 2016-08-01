@@ -1,7 +1,7 @@
 # ner-play-server
 This is NER API Server with Play Framework for Stanford NLP.
 
-![https://gyazo.com/a2d68da281f17efeca64ce420c706793](https://i.gyazo.com/a2d68da281f17efeca64ce420c706793.png)
+![https://gyazo.com/1e67c05975d89ee14f1214fd24b42f56](https://i.gyazo.com/1e67c05975d89ee14f1214fd24b42f56.png)
 
 ## Dependencies
 
