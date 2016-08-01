@@ -1,10 +1,61 @@
 # ner-play-server
 This is NER API Server with Play Framework for Stanford NLP.
 
+![https://gyazo.com/a2d68da281f17efeca64ce420c706793](https://i.gyazo.com/a2d68da281f17efeca64ce420c706793.png)
+
 ## Dependencies
 
 * [Play Framework](https://www.playframework.com/)
 * [Stanford NER](http://nlp.stanford.edu/software/CRF-NER.shtml)
+
+## Usage
+
+1. Initialize calssifier (default: `english.all.3class.distsim.crf.ser.gz`)
+
+  ```
+  $ url http://localhost:9000/ner | jq
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+  100    85  100    85    0     0   2459      0 --:--:-- --:--:-- --:--:--  2575
+  {
+    "status": "available",
+    "current": "english.all.3class.distsim.crf.ser.gz",
+    "message": ""
+  }
+  ```
+
+2. Post a sentence
+
+  ```
+  curl --header "Content-type: application/json" --request POST --data '{"text":"I live in Japan."}' http://localhost:9000/ner | jq
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+  100   179  100   152  100    27   4545    807 --:--:-- --:--:-- --:--:--  4606
+  {
+    "tokens": [
+      {
+        "text": "I",
+        "label": "O"
+      },
+      {
+        "text": "live",
+        "label": "O"
+      },
+      {
+        "text": "in",
+        "label": "O"
+      },
+      {
+        "text": "Japan",
+        "label": "LOCATION"
+      },
+      {
+        "text": ".",
+        "label": "O"
+      }
+    ]
+  }
+  ```
 
 ## Build
 
@@ -51,4 +102,32 @@ $ ./bin/activator
 [info] Your package is ready in /Users/katososuke/.ghq/github.com/sosuke-k/ner-play-server/target/universal/ner-play-server-1.0-SNAPSHOT.zip
 [info]
 [success] Total time: 88 s, completed 2016/08/02 5:48:00
+```
+
+### 3'. Run play server
+
+```
+$ ./bin/activator run
+```
+
+## Use distribution binary
+
+Download `ner-play-server-1.0-SNAPSHOT.zip` in [this page](https://github.com/sosuke-k/ner-play-server/releases/tag/v_1.0.0) and unzip it.
+
+```
+$ wget https://github.com/sosuke-k/ner-play-server/releases/download/v_1.0.0/ner-play-server-1.0-SNAPSHOT.zip
+$ unzip ner-play-server-1.0-SNAPSHOT.zip
+```
+
+Change it as execution file.
+
+```
+$ chmod +x ner-play-server-1.0-SNAPSHOT/bin/ner-play-server
+```
+
+Run it.
+
+```
+$ ner-play-server-1.0-SNAPSHOT/bin/ner-play-server
+...
 ```
