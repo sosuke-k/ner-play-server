@@ -1,4 +1,4 @@
-name := """play"""
+name := """ner-play-server"""
 
 version := "1.0-SNAPSHOT"
 
